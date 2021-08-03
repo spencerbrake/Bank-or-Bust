@@ -1,50 +1,77 @@
-import React, {useState} from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React, {useState, Component} from 'react';
+import { Redirect, Route, Switch, } from 'react-router-dom';
 import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
+import MyBetsPage from '../MyBetsPage/MyBetsPage';
+import BetHistoryPage from '../BetHistoryPage/BetHistoryPage';
+import NavBar from '../../../src/components/NavBar/NavBar'
 
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
 
-function App() {
-
-  const [user, setUser] = useState(userService.getUser()) // getUser decodes our JWT token, into a javascript object
-  // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like 
-  // this  const token = createJWT(user); // where user was the document we created from mongo
-
-  function handleSignUpOrLogin(){
-    setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
+      user: userService.getUser()
+    };
   }
 
-  function handleLogout(){
+  handleLogout = () => {
     userService.logout();
-    setUser({user: null})
+    this.setState({ user: null });
   }
 
-  return (
-    <div className="App">
-      <Switch>
-          <Route exact path="/login">
-             <LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>
-          </Route>
-          <Route exact path="/signup">
-             <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
-          </Route>
-          {userService.getUser() ? 
-            <> 
-             <Switch>
-                <Route exact path="/">
-                    Home PAGE COMPONENT WOULD GO HEREE
-                </Route>
-            </Switch>
-            </>
-            :
-            <Redirect to='/login'/>
-          }
-  
-      </Switch>
-    </div>
-  );
+  handleSignupOrLogin = () => {
+    this.setState({ user: userService.getUser() });
+  }
+
+
+
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          Bank or Bust
+          <NavBar
+            user={this.state.user}
+            handleLogout={this.handleLogout}
+          />
+        </header>
+        <Switch>
+
+        <Route exact path='/bet-history' render={() =>
+            <BetHistoryPage
+              user={this.state.user}
+              handleLogout={this.handleLogout}
+            />
+          }/>
+
+          <Route exact path='/' render={() =>
+            <MyBetsPage
+              user={this.state.user}
+              handleLogout={this.handleLogout}
+            />
+          }/>
+          <Route exact path='/signup' render={({ history }) => 
+            <SignupPage
+              history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
+            />
+          }/>
+          <Route exact path='/login' render={({ history }) => 
+            <LoginPage
+              handleSignupOrLogin={this.handleSignupOrLogin}
+              history={history}
+            />
+          }/>
+        </Switch>
+
+
+      </div>
+    );
+  }
 }
 
 export default App;
