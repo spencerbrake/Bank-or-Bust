@@ -2,12 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const betSchema = new Schema({
-    game: {type: String, required: true},
-    team: {type: String, required: true},
-    type: {type: String, required: true},
-    odds: {type: String, required: true},
-    amount: {type: Number, required: true},
-    result: String
+    game: {type: String},
+    team: {type: String},
+    type: {type: String},
+    odds: {type: String},
+    amount: {type: Number},
+    result: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, {
     timestamps: true
 });

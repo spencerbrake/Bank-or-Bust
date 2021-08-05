@@ -21,6 +21,7 @@ class App extends Component {
   }
 
   handleAddBet = async newBetData => {
+    newBetData.user = this.state.user._id
     const newBet = await betAPI.create(newBetData);
     this.setState(state => ({
       bets: [...state.bets, newBet]

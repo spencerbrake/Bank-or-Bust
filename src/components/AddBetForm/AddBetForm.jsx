@@ -21,12 +21,13 @@ class AddBetForm extends Component {
 
     handleChange = b => {
         const formData = {...this.state.formData,
-        [b.target.game]: b.target.value
+        [b.target.name]: b.target.value
         };
         this.setState({
             formData,
             invalidForm: !this.formRef.current.checkValidity()
         });
+        console.log(this.state)
     };
 
     render() {
@@ -89,7 +90,15 @@ class AddBetForm extends Component {
                             placeholder="Amount"
                         />
                     </div>
-                    <button class="btn btn-primary" type="submit">Submit form</button>
+                    <button 
+                        class="btn btn-primary" 
+                        type="submit"
+                        disabled={this.state.invalidForm}
+                        >
+
+                        Submit form
+
+                    </button>
                 </form>
             </>
         )
