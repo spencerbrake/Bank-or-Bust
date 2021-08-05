@@ -1,15 +1,21 @@
 import React from 'react';
+import BetListItem from '../../components/BetListItem/BetListItem';
 import './MyBetsPage.css';
 
-const MyBetsPage = (props) => {
+function MyBetsPage(props) {
     return (
         <>
             <h1>My Bets</h1>
-            <div className="MyBetsPage">
-
+            <div className="MyBetsPage-grid">
+                {props.bets.map(bet => (
+                    <BetListItem
+                    bet={bet}
+                    key={bet._id} 
+                    />
+                ))}
             </div>
         </>
-    )
+    );
 }
 
-export default MyBetsPage 
+export default MyBetsPage;

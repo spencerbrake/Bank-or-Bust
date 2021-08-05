@@ -3,12 +3,15 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const favicon = require('serve-favicon');
+// const cors = require('cors');
 
 require('./config/database');
 
 // Require controllers here
 
 const app = express();
+
+// app.use(cors());
 
 // add in when the app is ready to be deployed
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
@@ -23,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'build'))); // this allows express t
 app.use(require('./config/auth')); 
 // api routes must be before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/bets', require('./routes/api/bets'));
 
 // "catch all" route
 app.get('/*', function(req, res) {
