@@ -19,3 +19,11 @@ export function deleteOne(id) {
         method: 'DELETE'
     }).then(res => res.json());
 }
+
+export function update(bet) {
+    return fetch(`${BASE_URL}/${bet._id}`, {
+        method: 'PUT',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(bet)
+    }).then(res => res.json());
+}

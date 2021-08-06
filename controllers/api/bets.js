@@ -3,7 +3,8 @@ const Bet = require('../../models/bet');
 module.exports = {
     index,
     create,
-    delete: deleteOne
+    delete: deleteOne,
+    update
 }
 
 async function index(req, res) {
@@ -20,4 +21,9 @@ async function create(req, res) {
 async function deleteOne(req, res) {
     const deletedBet = await Bet.findByIdAndRemove(req.params.id);
     res.status(200).json(deletedBet);
+}
+
+async function update(req, res) {
+    const updatedBet = await Bet.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    res.status(200).json(updatedBet);
 }

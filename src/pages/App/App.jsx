@@ -7,7 +7,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
 import MyBetsPage from '../MyBetsPage/MyBetsPage';
 import BetHistoryPage from '../BetHistoryPage/BetHistoryPage';
-import NavBar from '../../../src/components/NavBar/NavBar'
+import NavBar from '../../../src/components/NavBar/NavBar';
+import UpdateBetPage from '../../pages/UpdateBetPage/UpdateBetPage'
 
 class App extends Component {
   state = {
@@ -39,6 +40,17 @@ class App extends Component {
     );
   };
 
+  handleUpdateBet = async updatedBetData => {
+    const updatedBet = await betAPI.update(updatedBetData);
+    const newBetArray = this.state.bets.map(b => 
+      b._id === updatedBet._id ? updatedBet : b
+      );
+      this.setState(
+        {bets: newBetArray},
+        () => this.props.history.push('/')
+      );
+  }
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -66,6 +78,7 @@ class App extends Component {
         <Route exact path='/bet-history' render={() =>
             <BetHistoryPage
               user={this.state.user}
+              bets={this.state.bets}
               handleLogout={this.handleLogout}
             />
           }/>
@@ -77,8 +90,16 @@ class App extends Component {
               handleLogout={this.handleLogout}
               handleAddBet={this.handleAddBet}
               handleDeleteBet={this.handleDeleteBet}
+              handleUpdateBet={this.handleUpdateBet}
             />
           }/>
+          <Route exact path='/update' render={() =>
+            <UpdateBetPage 
+              user={this.state.user}
+              handleUpdateBet={this.handleUpdateBet}
+
+            />
+            }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
               history={history}
