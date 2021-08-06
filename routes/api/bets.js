@@ -5,6 +5,7 @@ const betsCtrl = require('../../controllers/api/bets')
 router.get('/', betsCtrl.index);
 router.use(require('../../config/auth'));
 router.post('/', checkAuth, betsCtrl.create);
+router.delete('/:id', betsCtrl.delete);
 
 
 /*----- Helper Functions -----*/

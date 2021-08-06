@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 function BetListItem(props) {
     return (
         <div>
-        <table class="table table-dark">
-            <thead class="thead-dark">
+        <table className="table table-dark">
+            <thead className="thead-dark">
                 <tr>
                     <th scope="col">Game</th>
                     <th scope="col">Team</th>
@@ -22,6 +22,12 @@ function BetListItem(props) {
                     <td>{props.bet.type}</td>
                     <td>{props.bet.odds}</td>
                     <td>${props.bet.amount}</td>
+                    <td>
+                        <button onClick={() => props.handleDeleteBet(props.bet._id)}
+                        >
+                            X
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>

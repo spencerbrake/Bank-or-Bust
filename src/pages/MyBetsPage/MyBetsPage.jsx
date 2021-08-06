@@ -1,7 +1,6 @@
 import React from 'react';
 import AddBetForm from '../../components/AddBetForm/AddBetForm'
 import BetListItem from '../../components/BetListItem/BetListItem';
-import NoBets from '../../components/NoBets/NoBets'
 import './MyBetsPage.css';
 
 function MyBetsPage(props) {
@@ -12,7 +11,8 @@ function MyBetsPage(props) {
                 {props.bets.filter(bet => (props.user && props.user._id === bet.user)).map(bet => 
                     <BetListItem
                     bet={bet}
-                    key={bet._id} 
+                    key={bet._id}
+                    handleDeleteBet={props.handleDeleteBet} 
                     />
                 )}
             </div>
