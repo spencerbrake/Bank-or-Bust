@@ -1,25 +1,17 @@
 .App {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 7vmin auto;
+  grid-template-rows: auto;
 }
 .App-header {
   background-color: var(--black);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2vmin;
-  font-size: 2.5vmin;
+  padding:4%;
+  font-size: 3vmin;
   color: var(--background);
 }
-.App main {
-  background-color: var(--background);
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+h1 {
+  text-align: center;
 }
-.App main h1 {
-  color: var(--secondary-dark);
-  margin-bottom: 5vmin;
-} 

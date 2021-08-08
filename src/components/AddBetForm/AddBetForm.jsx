@@ -33,75 +33,83 @@ class AddBetForm extends Component {
     render() {
         return (
             <>
-                <form ref={this.formRef} onSubmit={this.handleSubmit} className="form-row">
-                    <div>
-                        <label></label>
-                        <input
-                            className="form-control"
-                            name="game"
-                            value={this.state.formData.game}
-                            onChange={this.handleChange}
-                            required
-                            placeholder="Game"
-                        />
+            <div className="add-bet-form">
+                <form ref={this.formRef} onSubmit={this.handleSubmit} className="">
+                    <div >
+                        <div className="form-row"> 
+                            <div className="form-group col-md">
+                                <input
+                                    className="form-control"
+                                    name="game"
+                                    value={this.state.formData.game}
+                                    onChange={this.handleChange}
+                                    required
+                                    placeholder="Game"
+                                />
+                            </div>
+                    
+                            <div className="form-group col-md">
+                                <input
+                                    className="form-control"
+                                    name="team"
+                                    value={this.state.formData.team}
+                                    onChange={this.handleChange}
+                                    required
+                                    placeholder="Team"
+                                />
+                            </div>
+                        </div>
+                        <div className="form-row">
+                            <div className="form-group col-md">
+                                <input
+                                    className="form-control"
+                                    name="type"
+                                    value={this.state.formData.type}
+                                    onChange={this.handleChange}
+                                    required
+                                    placeholder="Type"
+                                />
+                            </div>
+                        
+                            <div className="form-group col-md">
+                                <input
+                                    className="form-control"
+                                    name="odds"
+                                    value={this.state.formData.odds}
+                                    onChange={this.handleChange}
+                                    required
+                                    placeholder="Odds"
+                                />
+                            </div>
+                        
+                            <div className="form-group col-md">
+                                <input
+                                    className="form-control"
+                                    name="amount"
+                                    value={this.state.formData.amount}
+                                    onChange={this.handleChange}
+                                    required
+                                    placeholder="Amount"
+                                />
+                            </div>
+                        </div>
+                        <br/>
+                        <div className="add-bet-btn">
+                            <button 
+                                className="btn btn-warning btn-lg btn-block" 
+                                type="submit"
+                                disabled={this.state.invalidForm}
+                                >
+                                
+                                Add bet
+                                
+                            </button>
+                        </div>
                     </div>
-
-                    <div>
-                        <label></label>
-                        <input
-                            className="form-control"
-                            name="team"
-                            value={this.state.formData.team}
-                            onChange={this.handleChange}
-                            required
-                            placeholder="Team"
-                        />
-                    </div>
-                    <div>
-                        <label></label>
-                        <input
-                            className="form-control"
-                            name="type"
-                            value={this.state.formData.type}
-                            onChange={this.handleChange}
-                            required
-                            placeholder="Type"
-                        />
-                    </div>
-                    <div>
-                        <label></label>
-                        <input
-                            className="form-control"
-                            name="odds"
-                            value={this.state.formData.odds}
-                            onChange={this.handleChange}
-                            required
-                            placeholder="Odds"
-                        />
-                    </div>
-                    <div>
-                        <label></label>
-                        <input
-                            className="form-control"
-                            name="amount"
-                            value={this.state.formData.amount}
-                            onChange={this.handleChange}
-                            required
-                            placeholder="Amount"
-                        />
-                    </div>
-                    <button 
-                        className="btn btn-primary" 
-                        type="submit"
-                        disabled={this.state.invalidForm}
-                        >
-
-                        Submit form
-
-                    </button>
                 </form>
+            </div>
             </>
-        )
+            )
     }
 }
 

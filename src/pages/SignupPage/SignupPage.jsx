@@ -1,9 +1,5 @@
 import React, { useState, Component } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import SignupForm from '../../components/SignupForm/SignupForm';
-
-import userService from '../../utils/userService';
-import { useHistory } from 'react-router-dom';
 
 
 class SignupPage extends Component {

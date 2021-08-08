@@ -26,6 +26,7 @@ module.exports = {
   }
 
   async function signup(req, res) {
+    console.log(req.body)
     const user = new User(req.body);
     try {
       await user.save();
@@ -33,6 +34,7 @@ module.exports = {
       const token = createJWT(user);
       res.json({ token });
     } catch (err) {
+      console.log(err)
       // Probably a duplicate email
       res.status(400).json(err);
     }

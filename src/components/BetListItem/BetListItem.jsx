@@ -1,6 +1,4 @@
-import { render } from '@testing-library/react';
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 
 class BetListItem extends Component {
@@ -25,36 +23,29 @@ class BetListItem extends Component {
     render() {
     return (
         <>
-                <tr>
-                <td>{this.props.bet.game}</td>
-                    <td>{this.props.bet.team}</td>
-                    <td>{this.props.bet.type}</td>
-                    <td>{this.props.bet.odds}</td>
-                    <td>${this.props.bet.amount}</td>
-                    <td>
-                    <div class="form-group">
+        <tr>
+            <td>{this.props.bet.game}</td>
+            <td>{this.props.bet.team}</td>
+            <td>{this.props.bet.type}</td>
+            <td>{this.props.bet.odds}</td>
+            <td>${this.props.bet.amount}</td>
+            <td>
+                <div className="select-close-out">
                     <form onSubmit={this.handleSubmit}>
-                        <select onChange={this.handleChange} name="result" class="form-control" id="sel1">
-                            <option disabled selected>Select Option</option>
-                            <option>Win</option>
-                            <option>Loss</option>
-                            <option>Tie</option>
-                        </select>
-
-
-
-                    <button
-                        type="submit"
-
-                    >
-                        Close Out
-                    </button>
-                    </form>
+                    <select class="custom-select custom-select-sm" onChange={this.handleChange} name="result">
+                                <option disabled selected>Select</option>
+                                <option>Win</option>
+                                <option>Loss</option>
+                                <option>Tie</option>
+                            </select>
+                            <br/><br/>
+                            <button className="btn btn-warning btn-sm" type="submit">Close Out</button>
+                        </form>
                     </div>
                     </td>
-                </tr>
+            </tr>
         </>
-    );
+        );
     }
 }
 export default BetListItem;

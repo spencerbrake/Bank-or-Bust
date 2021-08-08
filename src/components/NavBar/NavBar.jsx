@@ -5,6 +5,7 @@ import './NavBar.css';
 const NavBar = (props) => {
     let nav = props.user ?
       <div>
+        &nbsp;&nbsp;&nbsp;
         <NavLink exact to='/'>
           My Bets
         </NavLink>
@@ -13,7 +14,7 @@ const NavBar = (props) => {
           Bet History
         </NavLink>
         &nbsp;&nbsp;&nbsp;
-        <Link to='' onClick={props.handleLogout} >LOG OUT</Link>
+        <Link to='' onClick={props.handleLogout} >Log Out</Link>
         &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
       </div>
@@ -21,11 +22,11 @@ const NavBar = (props) => {
 
         <nav>
             <NavLink exact to='/'>
-                BETS
+            My Bets
             </NavLink>
                 &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/bet-history'>
-                HISTORY
+            Bet History
             </NavLink>
                 &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/signup'>
