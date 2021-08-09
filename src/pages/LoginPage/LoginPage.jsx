@@ -37,7 +37,6 @@ class LoginPage extends Component {
       render() {
         return (
           <div className="LoginPage">
-            <header className="header-footer">Log In</header>
             <form className="px-4 py-3" onSubmit={this.handleSubmit} >
               <div className="form-group">
                   <input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />

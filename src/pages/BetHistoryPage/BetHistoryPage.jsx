@@ -1,46 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import BetHistoryListItem from '../../components/BetListItem/BetHistoryListItem';
+import FilterForm from '../../components/FilterForm/FilterForm';
 import './BetHistoryPage.css';
 
-function performance(arr) {
-    let win = 0;
-    let loss = 0;
-    arr.forEach(function(ele) {
-        if(ele.result === 'Win') {
-            win += ele.amount 
-        } else if(ele.result === 'Loss') {
-            loss += ele.amount
-        }
-    })
-    return win - loss
-
-}
 
 
 const BetHistoryPage = (props) => {
+    const [bets, setBets] = useState([])
+
+    useEffect(() => {
+        setBets(props.bets.filter(bet => (bet.result === 'Win' || bet.result === 'Loss' || bet.result === 'Tie')))
+    }, [props.bets])
+
+    function performance(arr) {
+        let win = 0;
+        let loss = 0;
+        arr.forEach(function(ele) {
+            if (ele.result === 'Win') {
+                win += ele.amount 
+            } else if (ele.result === 'Loss') {
+                loss += ele.amount
+            }
+        })
+        return win - loss
+    }
+
+    function totalWagers(arr) {
+
+        let count = 0;
+        arr.forEach(function(ele) {
+            if(ele.result === 'Win' || ele.result === 'Loss' || ele.result === 'Tie') {
+                count++
+            }
+        })
+        return count 
+    }
     return (
         <>
-        <h1>Bet History</h1>
+        <br/>
             <br/>
-            <div class="card">
-                <h3>Performance: ${performance(props.bets)}</h3>
-            </div>
-            <br/>
-            <div className="filter-form">
-                    <form className="form-inline">
-                        <select class="custom-select custom-select-sm">
-                            <option disabled selected>Filter</option>
-                            <option>Day</option>
-                            <option>Week</option>
-                            <option>Month</option>
-                            <option>Year</option>
-                        </select>
-                        &nbsp;&nbsp;&nbsp;
-                        <span>
-                            <button className="btn btn-warning btn-sm" type="submit">Search</button>
-                        </span>
-                    </form>
+            <div className="row">
+                <div className="pending-tron">
+                    <div className="jumbotron text-center col-md-12 bg-secondary">
+                        <h3>Performance: <strong>${performance(props.bets)}</strong></h3>
+                    </div>
+                </div>    
+            &nbsp;&nbsp;&nbsp;
+                <div className="pending-wagers-tron">
+                    <div className="jumbotron text-center col-md-12 bg-secondary">
+                        <h3>Total Wagers: <strong>{totalWagers(props.bets)}</strong></h3>
+                    </div>
                 </div>
+            </div>
 
                 <br/>
         <div className="Bet-History-table">
@@ -57,14 +68,14 @@ const BetHistoryPage = (props) => {
                 </tr>
             </thead>
             <tbody>    
-            {props.bets.filter(bet => (props.user && props.user._id === bet.user && bet.result === 'Win' || bet.result === 'Loss' || bet.result === 'Tie')).map(bet => 
+            {bets.map(bet =>  
                     <BetHistoryListItem
                     bet={bet}
                     key={bet._id} 
                     handleDeleteBet={props.handleDeleteBet}
-
                     /> 
-                )}
+                    )
+                }
             </tbody>
         </table>
         </div>
@@ -74,4 +85,4 @@ const BetHistoryPage = (props) => {
     )
 }
 
-export default BetHistoryPage
+export default BetHistoryPage;

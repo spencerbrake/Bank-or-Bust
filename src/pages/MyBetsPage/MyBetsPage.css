@@ -5,12 +5,13 @@
     display: block;
     height: 350px;
     overflow-y: auto;
+    color: slategrey;
   }
 
   .add-bet-form {
     margin: auto;
     width: 60%;
-    color: #00C358;
+    color: black;
   }
 
   h3 {
@@ -28,4 +29,8 @@
 
   .login-msg {
     text-align: center;
+  }
+
+  table {
+    color: slategrey;
   }

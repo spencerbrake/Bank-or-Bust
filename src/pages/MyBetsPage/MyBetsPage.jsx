@@ -18,9 +18,7 @@ const MyBetsPage = (props) => {
     } 
     return (
         <>
-            <br/>
-            <h1><strong>My Bets</strong></h1>
-            <br/>
+        <br/>
             <div className="row">
                 <div className="pending-tron">
                     <div className="jumbotron text-center col-md-12 bg-secondary">
@@ -33,7 +31,12 @@ const MyBetsPage = (props) => {
                         <h3>Pending Wagers: <strong>{pendingWagers(props.bets)}</strong></h3>
                     </div>
                 </div>
-            </div>  
+            </div> 
+            <br/>
+            <div className="add-bet-form">
+                {showAddBet}         
+            </div> 
+            <br/><br/>
             <div className="MyBetsPage-table table-responsive">
                 <table className="table table-striped table-dark ">
                     <thead className="">
@@ -59,11 +62,6 @@ const MyBetsPage = (props) => {
                     </tbody>
                 </table>
             </div>
-            <br/>
-            <div className="add-bet-form">
-                {showAddBet}         
-            </div>
-            <br/><br/>
         </>
     );    
 }

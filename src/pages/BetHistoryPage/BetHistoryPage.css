@@ -1,6 +1,6 @@
 .Bet-History-table {
     border-radius: 10px;
-    width: 55%;
+    width: 65%;
     margin: auto;
     display: block;
     height: 400px;
@@ -15,3 +15,8 @@ h4 {
 .filter-form {
     margin: auto;
 } 
+
+
+h3 {
+    text-align: center;
+}

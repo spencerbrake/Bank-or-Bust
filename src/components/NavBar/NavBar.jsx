@@ -14,9 +14,9 @@ const NavBar = (props) => {
           Bet History
         </NavLink>
         &nbsp;&nbsp;&nbsp;
-        <Link to='' onClick={props.handleLogout} >Log Out</Link>
+        <Link to='' onClick={props.handleLogout} >Logout</Link>
         &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
+        <span className='NavBar-welcome'>{props.user.name}</span>
       </div>
       :
 

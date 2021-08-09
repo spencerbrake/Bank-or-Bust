@@ -1,5 +1,5 @@
-import React, {useState, Component} from 'react';
-import { Redirect, Route, Switch, NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import * as betAPI from '../../services/bet-api'
 import SignupPage from '../SignupPage/SignupPage';
@@ -36,7 +36,7 @@ class App extends Component {
       state => ({
         bets: state.bets.filter(b => b._id !== id)
       }),
-      () => this.props.history.push('/')
+      () => this.props.history.push('/bet-history')
     );
   };
 
@@ -67,11 +67,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+        &nbsp;&nbsp;
           Bank or Bust
+          <div className="navbar">
           <NavBar
             user={this.state.user}
             handleLogout={this.handleLogout}
           />
+          </div>
         </header>
         <Switch>
 
@@ -81,6 +84,7 @@ class App extends Component {
               bets={this.state.bets}
               handleLogout={this.handleLogout}
               handleDeleteBet={this.handleDeleteBet}
+              updateFilterForm={this.updateFilterForm}
             />
           }/>
 
@@ -94,10 +98,11 @@ class App extends Component {
               handleUpdateBet={this.handleUpdateBet}
             />
           }/>
-          <Route exact path='/update' render={() =>
+          <Route exact path='/update' render={({location}) =>
             <UpdateBetPage 
               user={this.state.user}
               handleUpdateBet={this.handleUpdateBet}
+              location={location}
 
             />
             }/>

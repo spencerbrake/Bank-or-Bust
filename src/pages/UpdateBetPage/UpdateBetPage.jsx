@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import AddBetForm from '../../components/AddBetForm/AddBetForm';
 
 class UpdateBetPage extends Component {
     state = {
         invalidForm: false,
-        formData: this.props.location.bet
+        formData: this.props.location.state.bet
     };
 
     formRef = React.createRef();

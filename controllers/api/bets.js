@@ -8,7 +8,8 @@ module.exports = {
 }
 
 async function index(req, res) {
-    const bets = await Bet.find({});
+    const bets = await Bet.find({user: req.user.id});
+    console.log(bets)
     res.status(200).json(bets);
 }
 
