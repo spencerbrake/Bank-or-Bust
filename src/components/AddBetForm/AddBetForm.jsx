@@ -96,7 +96,7 @@ class AddBetForm extends Component {
                         <br/>
                         <div className="add-bet-btn">
                             <button 
-                                className="btn btn-warning btn-lg btn-block" 
+                                className="btn btn-primary btn-lg btn-block" 
                                 type="submit"
                                 disabled={this.state.invalidForm}
                                 >

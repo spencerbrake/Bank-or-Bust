@@ -19,26 +19,8 @@ const MyBetsPage = (props) => {
     return (
         <>
         <br/>
-            <div className="row">
-                <div className="pending-tron">
-                    <div className="jumbotron text-center col-md-12 bg-secondary">
-                        <h3>Pending: <strong>${props.bets.filter(bet => (props.user && props.user._id === bet.user && bet.result !== 'Win' && bet.result !== 'Loss' && bet.result !== 'Tie')).reduce((total, bet) => total + bet.amount, 0)}</strong> </h3>
-                    </div>
-                </div>
-            &nbsp;&nbsp;&nbsp;
-                <div className="pending-wagers-tron">
-                    <div className="jumbotron text-center col-md-12 bg-secondary">
-                        <h3>Pending Wagers: <strong>{pendingWagers(props.bets)}</strong></h3>
-                    </div>
-                </div>
-            </div> 
-            <br/>
-            <div className="add-bet-form">
-                {showAddBet}         
-            </div> 
-            <br/><br/>
-            <div className="MyBetsPage-table table-responsive">
-                <table className="table table-striped table-dark ">
+        <div className="MyBetsPage-table table-responsive">
+                <table className="table table-striped table-dark">
                     <thead className="">
                         <tr>
                             <th scope="col">Game</th>
@@ -62,6 +44,25 @@ const MyBetsPage = (props) => {
                     </tbody>
                 </table>
             </div>
+        <br/>
+            <div className="add-bet-form">
+                {showAddBet}         
+            </div> 
+        <br/><br/>
+            <div className="row">
+                <div className="pending-tron">
+                    <div className="jumbotron text-center col-md-12 bg-dark bg-gradient">
+                        <h3>Pending: <strong>${props.bets.filter(bet => (props.user && props.user._id === bet.user && bet.result !== 'Win' && bet.result !== 'Loss' && bet.result !== 'Tie')).reduce((total, bet) => total + bet.amount, 0)}</strong> </h3>
+                    </div>
+                </div>
+            &nbsp;&nbsp;&nbsp;
+                <div className="pending-wagers-tron">
+                    <div className="jumbotron text-center col-md-12 bg-dark">
+                        <h3>Pending Wagers: <strong>{pendingWagers(props.bets)}</strong></h3>
+                    </div>
+                </div>
+            </div> 
+            <br/>
         </>
     );    
 }

@@ -1,4 +1,8 @@
-
+body {
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
 .App {
   /* position: absolute;
   height: 100vh;
@@ -11,9 +15,7 @@
   background-color: white;
 }
 .App-header {
-  height: 100%;
-  width: 100%;
-  background-color: slategrey;
+  background-color: rgb(54, 58, 63);
   display: flex;
   align-items: center;
   justify-content: space-between;
