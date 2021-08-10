@@ -1,39 +1,34 @@
-## Setup 
+# Bank or Bust
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+Bank or Bust is a simplistic app for sports bettors to track bets and see how much they are winning or losing! Visit [Bank or Bust](https://bank-or-bust98.herokuapp.com/) to start tracking your bets.
+
+## Wireframes 
+
+![wireframe login screen](public/project4-mainscreen.png)
+
+![wireframe players screen](public/project4-mybetspage.png)
+
+![wireframe login screen](public/project4-bethistorypage.png)
+
+## Technologies Used:
+
+- Node.js
+- MongoDB
+- React
+- Express
+- Mongoose
+- HTML
+- CSS
+- Bootstrap
+
+## Getting Started 
+
+[Visit my App](https://bank-or-bust98.herokuapp.com/)
 
 
-#### Setup your git repo
+[See my Trello Board](https://trello.com/b/izoHZMC3/bank-or-bust)
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+## Next Steps
 
-it should look like this
-
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
-
-#### Setup the App
-
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+1. Implement Odds api for live odds of current match ups 
+2. add public chat room to app that will alow all users to communicate about bets
